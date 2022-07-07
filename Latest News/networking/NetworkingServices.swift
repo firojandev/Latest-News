@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkingServices: NSObject,XMLParserDelegate, ObservableObject {
+class NetworkingServices: NSObject, ObservableObject {
     
     var items = [Item]()
     var xmlDict = [String: Any]()
@@ -42,6 +42,10 @@ class NetworkingServices: NSObject,XMLParserDelegate, ObservableObject {
            }.resume()
        }
     
+    
+}
+
+extension NetworkingServices: XMLParserDelegate {
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
            
            //The current parsed tag is presented as `elementName` in this function
@@ -86,6 +90,4 @@ class NetworkingServices: NSObject,XMLParserDelegate, ObservableObject {
         }
         
     }
-       
-    
 }
